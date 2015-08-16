@@ -18,7 +18,7 @@ soup = BeautifulSoup("".join(pageHtml))
 #sAll = soup.findAll("div", "sectionon")
 sAll = soup.findAll("em")[0].next
 
-issue_name=sAll.replace(' ','').replace('Vol.50,','')
+issue_name=sAll.replace(' ','').replace('Vol.50,','').replace('.','').replace(',','_')
 
 data = soup.findAll('div',attrs={'class':'content-content'});
 for div in data:
