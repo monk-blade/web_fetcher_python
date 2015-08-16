@@ -31,7 +31,7 @@ for div in data:
             for a in links:
                 pdflinks = a['href'];
                 print "\n Downloading :" + pdflinks
-                wget.download(pdflinks,out=str(i)+".pdf")
+                wget.download(pdflinks,out=str(i).zfill(2)+".pdf")
                 i += 1
                 #print "\n"
                 #print i
