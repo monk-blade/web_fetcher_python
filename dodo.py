@@ -14,7 +14,11 @@ pageFile.close()
  
 soup = BeautifulSoup("".join(pageHtml))
 
+
 #sAll = soup.findAll("div", "sectionon")
+sAll = soup.findAll("em")[0].next
+
+issue_name=sAll.replace(' ','').replace('Vol.50,','')
 
 data = soup.findAll('div',attrs={'class':'content-content'});
 for div in data:
@@ -36,4 +40,6 @@ for div in data:
                 #print "\n"
                 #print i
                 #print "\n"
-os.system("pdftk *.pdf cat output Fullissue.pdf")
+pdf_merge="pdftk *.pdf cat output " + issue_name + ".pdf"
+
+os.system(pdf_merge)
