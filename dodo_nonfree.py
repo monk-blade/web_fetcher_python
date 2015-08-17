@@ -8,7 +8,7 @@ i=1
 os.system("rm [0-9]*.pdf")
 
 
-pageFile = urllib2.urlopen("http://www.epw.in/ejournal/show/1/_/3025")
+pageFile = urllib2.urlopen("http://www.epw.in/ejournal/show/1/_/3069")
  
 pageHtml = pageFile.read()
  
@@ -20,7 +20,7 @@ soup = BeautifulSoup("".join(pageHtml))
 #sAll = soup.findAll("div", "sectionon")
 sAll = soup.findAll("em")[0].next
 
-issue_name=sAll.replace(' ','').replace('Vol.50,','').replace('.','').replace(',','_')
+issue_name=sAll.replace(' ','').replace('.','').replace(',','_')
 
 data = soup.findAll('div',attrs={'class':'content-content'});
 for div in data:
