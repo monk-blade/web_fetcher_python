@@ -3,7 +3,7 @@ import urllib
 import urllib2
 import wget
 import os
-for num in range(3035,3069):
+for num in range(3050,3069):
     i=1
     os.system("rm [0-9]*")
 
@@ -41,6 +41,6 @@ for num in range(3035,3069):
                     #print "\n"
                     #print i
                     #print "\n"
-    pdf_merge="pdftk *.pdf cat output " + issue_name + ".pdf"
+    pdf_merge="pdftk [0-9]*.pdf cat output " + issue_name + ".pdf"
 
     os.system(pdf_merge)
