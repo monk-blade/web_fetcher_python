@@ -18,7 +18,7 @@ topic = soup.findAll('li')
 #print(soup.prettify())
 #print topic
 for tag in topic:
-	tdTags = tag.find_all("a", text = re.compile(ur'^[0-9](.*)May(.*)2015.*', re.DOTALL))
+	tdTags = tag.find_all("a", text = re.compile(ur'^[0-9](.*)July(.*)2015.*', re.DOTALL))
 	for tag in tdTags:
 		list_url = tag['href']
 		pageFile = urllib2.urlopen(list_url.encode('utf-8'))
