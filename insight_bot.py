@@ -18,7 +18,7 @@ topic = soup.findAll('li')
 #print(soup.prettify())
 #print topic
 for tag in topic:
-	tdTags = tag.find_all("a", text = re.compile(ur'^[0-9](.*)April(.*)2015.*', re.DOTALL))
+	tdTags = tag.find_all("a", text = re.compile(ur'^[0-9](.*)May(.*)2015.*', re.DOTALL))
 	for tag in tdTags:
 		list_url = tag['href']
 		pageFile = urllib2.urlopen(list_url.encode('utf-8'))
@@ -36,7 +36,8 @@ for tag in topic:
 			soup = BeautifulSoup("".join(pageHtml))
 			topic = soup.findAll('blockquote')[0].next
 			que = soup.findAll('title')[0].next
-			print topic.encode('cp1252')
+			if topic:
+				print topic.encode('cp1252')
 			print "\n"
 			print "<span style=\"color: #3366ff;\"><h3>"
 			print que.encode('utf-8')
@@ -48,5 +49,7 @@ for tag in topic:
 			        print "<b>ANSWER-" + str(num)+ ":</b>"
 			        print strong_tag.encode('cp1252')
 			        print "\n"
-			        
+			    if num == 2:
+			     	break
+			    else:
 			        num += 1
