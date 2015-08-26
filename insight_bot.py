@@ -34,14 +34,15 @@ for tag in topic:
 			pageHtml = pageFile.read()
 			pageFile.close()
 			soup = BeautifulSoup("".join(pageHtml))
-			topic = soup.findAll('blockquote')[0].next
+			#topic = soup.findAll('blockquote')[0].next
 			que = soup.findAll('title')[0].next
-			if topic:
-				print topic.encode('cp1252')
-			print "\n"
 			print "<span style=\"color: #3366ff;\"><h3>"
 			print que.encode('utf-8')
 			print "</h3></span>"
+			for topic in soup.findAll('blockquote'):
+				if len(topic.text) > 1:
+					print topic.encode('cp1252')
+				break
 			print "\n\n"
 			num = 1
 			for strong_tag in soup.findAll('div',attrs={'class':'dsq-comment-message'}):
@@ -49,7 +50,6 @@ for tag in topic:
 			        print "<b>ANSWER-" + str(num)+ ":</b>"
 			        print strong_tag.encode('cp1252')
 			        print "\n"
-			    if num == 2:
-			     	break
-			    else:
 			        num += 1
+			    if num == 3:
+			     	break
